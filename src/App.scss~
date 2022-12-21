@@ -1,0 +1,75 @@
+@use './function' as f;
+
+:root {
+  --ticks-color: black;
+  --tick-color: white;
+}
+
+@keyframes rotating {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  position: relative;
+  .list {
+	width: 30%;
+	height: 100%;
+	@include f.neumorph(f.$d);
+	@include f.curve(-90deg);
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	.item {
+	  text-align: center;
+	  padding: 1em;
+	  margin: 0 1em;
+	  position: relative;
+	  color: f.set-text-color(f.$primary);
+	  list-style-type: none;
+	  @include f.neumorph(f.$d);
+	  @include f.round;
+	  cursor: pointer;
+	  overflow: clip;
+	  transition: ease-out 0.5s;
+	  .filling {
+		background-color: f.$on-primary;
+		height: 100%;
+		position: absolute;
+		width: 0%;
+		top: 0;
+		left: 0;
+		transition: ease-in-out 0.5s;
+	  }
+	  .title {
+		z-index: 3;
+	  }
+	}
+	.item:hover {
+	  @include f.neumorph-mold(f.$d, f.$on-primary);
+	  color: f.set-text-color(f.$on-primary);
+	  .filling {
+		width: 100%;
+	  }
+	}
+	.item:active {
+	  @include f.neumorph-inset(f.$d);
+	}
+  }
+  .current {
+	width: 70%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+  }
+}

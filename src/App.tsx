@@ -1,0 +1,67 @@
+import { useEffect, useState } from "react";
+import "./App.scss";
+import Timer from './components/Timer';
+import Table from './components/Table';
+
+interface Session {
+    title: string,
+    duration: number
+}
+
+function App() {
+    const [time, setTime] = useState(0);
+    const [index, setIndex] = useState(-1);
+    const [interv, setInterv] = useState(0);
+    const [allSession, setAllSession] = useState<Session[]>(
+        [
+            { title: "Working", duration: 0 },
+            { title: "Learning", duration: 0 },
+            { title: "Tinkering", duration: 0 },
+            { title: "Wasted", duration: 0 }
+        ]
+    );
+
+    let j = 0;
+
+    const run = () => {
+        j++;
+        setTime(j);
+    }
+
+    const onStart = (ind: number) => {
+        onStop();
+        setInterv(window.setInterval(run, 1000));
+        setIndex(ind);
+    }
+
+    const onStop = () => {
+        if (index != -1) {
+            const tmp = [...allSession];
+            tmp[index].duration += time;
+            window.clearInterval(interv);
+            setAllSession(tmp);
+            setIndex(-1);
+        }
+    }
+
+    return (
+        <div className="app">
+            <ul className="list">
+                {allSession.map((ses: Session, ind: number) =>
+                    <li key={ind} className="item" onClick={() => onStart(ind)}>
+                        <span className="title">{ses.title}</span>
+                    </li>
+                )}
+            </ul>
+            <div className="current">
+                <Timer time={time} onStop={onStop} />
+                <Table
+                    headers={allSession.map((ses: Session) => ses.title)}
+                    data={allSession.map((ses: Session) => Math.floor(ses.duration / 60))}
+                />
+            </div>
+        </div>
+    );
+}
+
+export default App;

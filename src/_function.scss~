@@ -1,0 +1,66 @@
+@use "sass:math";
+
+$primary: #3626ad;
+$on-primary: #e4ebf6;
+$d: 15px;
+
+@mixin neumorph($dist) {
+  $shadowhigh: lighten($primary, 8%);
+  $shadowlow: darken($primary, 8%);
+  $half: math.div($dist, 2);
+  $opposite: (0 - $half);
+  background: $primary;
+  box-shadow: $half $half $dist $shadowlow,
+			  $opposite $opposite $dist $shadowhigh;
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+	@return #000000;
+  } @else {
+	@return #ffffff;
+  }
+}
+
+@mixin neumorph-inset($dist) {
+  $shadowhigh: lighten($primary, 8%);
+  $shadowlow: darken($primary, 8%);
+  $half: math.div($dist, 2);
+  $opposite: (0 - $half);
+  background: $primary;
+  box-shadow: inset $half $half $dist $shadowlow,
+			  inset $opposite $opposite $dist $shadowhigh;
+}
+
+@mixin neumorph-both($dist) {
+  $shadowhigh: lighten($primary, 8%);
+  $shadowlow: darken($primary, 8%);
+  $half: math.div($dist, 2);
+  $opposite: (0 - $half);
+  background: $primary;
+  box-shadow: inset $half $half $dist $shadowlow,
+			  inset $opposite $opposite $dist $shadowhigh,
+			  $half $half $dist $shadowlow,
+			  $opposite $opposite $dist $shadowhigh;
+}
+
+@mixin neumorph-mold($dist, $color) {
+  $shadowhigh: lighten($color, 8%);
+  $shadowlow: darken($color, 8%);
+  $half: math.div($dist, 2);
+  $opposite: (0 - $half);
+  background: $color;
+  box-shadow: inset $half $half $dist $shadowhigh,
+			  inset $opposite $opposite $dist $shadowlow,
+			  0 0 (2 * $dist) $shadowlow;
+}
+
+@mixin round {
+  border-radius: 100vw;
+}
+
+@mixin curve($dir) {
+  $highlight: lighten($primary, 4%);
+  $lowlight: darken($primary, 4%);
+  background: linear-gradient($dir, $lowlight, $highlight);
+}

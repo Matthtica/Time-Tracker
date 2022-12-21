@@ -1,0 +1,66 @@
+@use '../function' as f;
+
+
+.current {
+  width: 100%;
+  display: flex;
+  height: 60%;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: f.$primary;
+  button {
+	@include f.neumorph(f.$d);
+	color: f.set-text-color(f.$primary);
+  }
+  .timer {
+    width: 40vh;
+    height: 40vh;
+    @include f.neumorph(20px);
+    @include f.round;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: f.set-text-color(f.$primary);
+	position: relative;
+	.clock {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  pointer-events: none;
+	}
+	.inner {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  text-align: center;
+	  width: 85%;
+	  height: 85%;
+	  @include f.neumorph-inset(20px);
+	  @include f.round;
+	  .btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60%;
+		height: 60%;
+		@include f.round;
+		@include f.neumorph(20px);
+		overflow: clip;
+		cursor: pointer;
+		.pause {
+		  display: none;
+		  width: 30%;
+		  height: 30%;
+		}
+	  }
+	  .btn:hover {
+		p {
+		  display: none;
+		}
+		.pause {
+		  display: block;
+		}
+	  }
+	}
+  }
+}
