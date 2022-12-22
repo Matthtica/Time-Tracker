@@ -4,8 +4,7 @@ Screenshots
 -----------
 
 ### Black
-![Screenshot Dark](https://imgur.com/a/EADF1VH)
-
+![Screenshot Dark](https://imgur.com/EADF1VH.png)
 This template should help get you started developing with Tauri, React and Typescript in Vite.
 
 ## To Contribute
