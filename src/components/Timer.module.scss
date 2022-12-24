@@ -7,59 +7,48 @@
   height: 60%;
   align-items: center;
   justify-content: space-evenly;
-  background-color: f.$primary;
-  button {
-	@include f.neumorph(f.$d);
-	color: f.set-text-color(f.$primary);
-  }
   .timer {
     width: 40vh;
     height: 40vh;
-    @include f.neumorph(20px);
-    @include f.round;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: f.set-text-color(f.$primary);
 	position: relative;
+	@include f.round;
+	border: f.brut();
 	.clock {
 	  position: absolute;
 	  width: 100%;
 	  height: 100%;
 	  pointer-events: none;
 	}
-	.inner {
+	.btn {
 	  display: flex;
-	  align-items: center;
 	  justify-content: center;
-	  text-align: center;
-	  width: 85%;
-	  height: 85%;
-	  @include f.neumorph-inset(20px);
+	  align-items: center;
+	  width: 60%;
+	  height: 60%;
+	  overflow: clip;
+	  cursor: pointer;
 	  @include f.round;
-	  .btn {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 60%;
-		height: 60%;
-		@include f.round;
-		@include f.neumorph(20px);
-		overflow: clip;
-		cursor: pointer;
-		.pause {
-		  display: none;
-		  width: 30%;
-		  height: 30%;
-		}
+	  background-color: var(--primary);
+	  .pause {
+		display: none;
+		width: 30%;
+		height: 30%;
 	  }
-	  .btn:hover {
-		p {
-		  display: none;
-		}
-		.pause {
-		  display: block;
-		}
+	  p {
+		color: white;
+		@include f.round;
+		padding: 0.3em 1em;
+	  }
+	}
+	.btn:hover {
+	  p {
+		display: none;
+	  }
+	  .pause {
+		display: block;
 	  }
 	}
   }

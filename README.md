@@ -1,13 +1,10 @@
-# Time-Tracker app written in Tauri + React + Typescript
+## Time-Tracker app written in Tauri + React + Typescript
 
 Screenshots
 -----------
 
 ### Black
 ![Screenshot Dark](https://i.imgur.com/OKDPC8S.jpg)
-
-
-This template should help get you started developing with Tauri, React and Typescript in Vite.
 
 ## To Contribute
 

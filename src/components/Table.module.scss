@@ -1,41 +1,30 @@
 @use '../function' as f;
 
-$w: 90%;
-
 .table {
   width: 100%;
   height: 40%;
-  @include f.neumorph-inset(f.$d);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+  border-top: f.brut();
   .header {
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
-	width: $w;
-	height: 2.5em;
-	margin-top: 1em;
-	@include f.neumorph(1vw);
-	@include f.round;
-	.head {
-	  color: f.set-text-color(f.$primary);
+	width: 100%;
+	border-bottom: f.brut();
+	.head:nth-child(odd) {
+	  background-color: var(--primary);
+	  color: white;
 	}
   }
-  .data {
-	width: $w;
-	display: flex;
-	justify-content: space-evenly;
-	position: relative;
-	color: f.set-text-color(f.$primary);
-  }
-  .data:after {
-	content: '';
-	position: absolute;
-	height: 1px;
-	background-color: f.set-text-color(f.$primary);
+  .head, .duration {
+	padding: 0.5em 1em;
 	width: 100%;
-	top: 100%;
+	text-align: center;
+  }
+  .data {
+	width: 100%;
+	display: flex;
+	position: relative;
   }
 }

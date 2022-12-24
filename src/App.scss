@@ -1,10 +1,16 @@
 @use './function' as f;
 
 :root {
-  --primary: #6126ad;
-  --on-primary: #fefcff;
-  --ticks-color: black;
-  --tick-color: white;
+  --primary: #dbdbdb;
+  --primary-dark: #6126ad;
+  --primary-light: #fefcff;
+
+  --secondary: #d6d6d6;
+  --secondary-dark: black;
+  --secondary-light: cyan;
+
+  --ticks-color: #2a3da3;
+  --tick-color: red;
 }
 
 @keyframes rotating {
@@ -17,54 +23,15 @@
 }
 
 .app {
-  display: flex;
+  width: 100vw;
   height: 100vh;
+}
+
+.content {
+  display: flex;
+  height: 100%;
   align-items: center;
   position: relative;
-  .list {
-	width: 30%;
-	height: 100%;
-	@include f.neumorph(f.$d);
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	.item {
-	  text-align: center;
-	  padding: 1em;
-	  margin: 0 1em;
-	  position: relative;
-	  color: f.set-text-color(f.$primary);
-	  list-style-type: none;
-	  @include f.neumorph(f.$d);
-	  @include f.round;
-	  cursor: pointer;
-	  overflow: clip;
-	  transition: ease-out 0.5s;
-	  .filling {
-		background-color: f.$on-primary;
-		height: 100%;
-		position: absolute;
-		width: 0%;
-		top: 0;
-		left: 0;
-		transition: ease-in-out 0.5s;
-	  }
-	  .title {
-		z-index: 3;
-	  }
-	}
-	.item:hover {
-	  @include f.neumorph-mold(f.$d, f.$on-primary);
-	  color: f.set-text-color(f.$on-primary);
-	  .filling {
-		width: 100%;
-	  }
-	}
-	.item:active {
-	  @include f.neumorph-inset(f.$d);
-	}
-  }
   .current {
 	width: 70%;
 	height: 100vh;
@@ -72,5 +39,14 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
+  }
+  .add-btn {
+	position: absolute;
+	right: 1em;
+	bottom: 1em;
+	width: 4em;
+	height: 4em;
+  }
+  .add-btn:hover {
   }
 }
