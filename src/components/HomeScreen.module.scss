@@ -1,0 +1,12 @@
+@use '../function' as f;
+
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  .content {
+	width: 100%;
+	height: 100%;
+  }
+}

@@ -13,9 +13,11 @@
   list-style-type: none;
   padding: 0;
   height: 100%;
-  width: 30%;
+  width: 30vw;
   box-sizing: border-box;
   border-right: f.brut();
+  margin: 0;
+  overflow: scroll;
   .item {
 	border-top: f.brut();
 	border-bottom: none;

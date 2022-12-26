@@ -26,27 +26,3 @@
   width: 100vw;
   height: 100vh;
 }
-
-.content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  position: relative;
-  .current {
-	width: 70%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-  }
-  .add-btn {
-	position: absolute;
-	right: 1em;
-	bottom: 1em;
-	width: 4em;
-	height: 4em;
-  }
-  .add-btn:hover {
-  }
-}

@@ -1,6 +1,7 @@
 import styles from './Timer.module.scss';
 
 interface TimerProp {
+    title: string,
     time: number,
     onStop: () => void,
 }
@@ -23,13 +24,14 @@ export default function Timer(prop: TimerProp) {
                     </defs>
                     <use href="#ticks" transform={`rotate(${(prop.time % 60) * 6})`} transform-origin="50 50" />
                 </svg>
-                <div className={styles.btn}>
-                    <p>{Math.floor(prop.time / (60 * 60)) % 24}:{Math.floor(prop.time / 60) % 60}:{prop.time % 60}</p>
+                <div className={styles.btn} onClick={prop.onStop}>
+                    <p className={styles.title}>{prop.title}</p>
+                    <p className={styles.duration}>{Math.floor(prop.time / (60 * 60)) % 24}:{Math.floor(prop.time / 60) % 60}:{prop.time % 60}</p>
                     <svg className={styles.pause} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M10 24h-6v-24h6v24zm10-24h-6v24h6v-24z" />
                     </svg>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -1,0 +1,130 @@
+@use '../function' as f;
+
+.dialog {
+  position: absolute;
+  width: 400px;
+  height: 220px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border: f.brut();
+  background-color: white;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  @include f.brutalize(10px);
+  transition: 0.3s ease-in-out;
+  .header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: f.brut();
+	height: 3em;
+	.title {
+	  margin-left: 1em;
+	}
+	.closebtn {
+	  border: none;
+	  box-shadow: none;
+	  padding: 0;
+	  margin: 0;
+	  width: 2em;
+	  aspect-ratio: 1 / 1;
+	  font-size: 1.5em;
+	  font-weight: bold;
+	  border-radius: 0;
+	}
+	.closebtn:hover {
+	  background-color: var(--primary);
+	  color: white;
+	}
+  }
+  .body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	input {
+	  box-shadow: none;
+	  border-radius: 0;
+	  border: f.brut();
+	  padding: 0.2em;
+	  font-size: 1.5em;
+	  font-weight: bold;
+	}
+  }
+  .confirm {
+	width: 100%;
+	height: 3em;
+	margin: 0;
+	border-radius: 0;
+	box-shadow: none;
+	margin: 0;
+	font-weight: bold;
+	border-top: f.brut();
+  }
+  .confirm:hover {
+	color: white;
+	background-color: var(--primary);
+	border: none;
+	border-top: f.brut();
+  }
+}
+
+.addbtn {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  margin: 0;
+  width: 3.5em;
+  height: 3.5em;
+  box-shadow: none;
+  border-radius: 0;
+  border: f.brut();
+  @include f.round;
+  @include f.brutalize(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-5%, -5%);
+  svg {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	transform: scale(1.5);
+  }
+}
+
+.addbtn:hover {
+  background-color: var(--primary);
+  border: f.brut();
+  box-shadow: none;
+  transform: translate(0, 0);
+  svg {
+	fill: white;
+  }
+}
+
+.overlay {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.activediag {
+  transform: translate(-50%, -50%) scale(1);
+}
