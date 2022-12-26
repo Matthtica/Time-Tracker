@@ -55,10 +55,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 700,
         "resizable": true,
         "title": "Time-Tracker",
-        "width": 800
+        "width": 1200
       }
     ]
   }
