@@ -4,8 +4,7 @@ Screenshots
 -----------
 
 ### Black
-![Screenshot Dark](https://i.imgur.com/OKDPC8S.jpg)
-
+![Screenshot Dark](https://i.imgur.com/AqJhEJX.jpg)
 ## To Contribute
 
 ### `yarn` 
