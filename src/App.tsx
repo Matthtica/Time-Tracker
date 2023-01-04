@@ -3,8 +3,8 @@ import "./App.scss";
 import HomeScreen from './components/HomeScreen';
 import { colorLuminance } from './utils';
 
-function App() {
-    const [color, setColor] = useState("#282828");
+export default function App() {
+    const [color, setColor] = useState("#1e1e1e");
     useEffect(() => {
         document.documentElement.style.cssText = `
 --primary: ${color};
@@ -18,5 +18,3 @@ function App() {
         </div>
     );
 }
-
-export default App;

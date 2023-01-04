@@ -17,6 +17,26 @@
 	  color: white;
 	}
   }
+  .head {
+	cursor: pointer;
+	position: relative;
+  }
+  .head::after {
+	display: none;
+	content: 'Click to delete';
+	position: absolute;
+	top: -100%;
+	right: 0;
+	width: 100%;
+	background-color: var(--primary);
+	border-radius: 0.5em;
+	color: white;
+	padding: 0.3em 1em;
+  }
+  .head:hover::after {
+	display: block;
+  }
+
   .head, .duration {
 	padding: 0.5em 1em;
 	width: 100%;

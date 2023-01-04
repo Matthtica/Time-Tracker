@@ -3,9 +3,11 @@ import { Task } from '../utils';
 import TasksList from './TasksList';
 import Timer from './Timer';
 import Table from './Table';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Dialog from './Dialog';
 import xlsx from 'xlsx';
+import fs from 'fs';
+import records from '../records.json';
 
 export default function HomeScreen() {
     const [time, setTime] = useState(0);
@@ -23,6 +25,20 @@ export default function HomeScreen() {
             { name: "Movie", duration: 0 },
         ]
     );
+    useEffect(() => {
+        const dataJson = localStorage.getItem("records");
+        const timejson = localStorage.getItem("date");
+        if (dataJson == null || timejson == null) return;
+
+        const time = JSON.parse(timejson);
+        const now = new Date();
+        console.log(now.getFullYear(), now.getMonth(), now.getDate());
+        if (time != now.getDate()) return;
+
+        const data = JSON.parse(dataJson);
+        setAllTasks(data);
+        console.log(data);
+    }, []);
 
     let j = 0;
 
@@ -37,7 +53,13 @@ export default function HomeScreen() {
         setIndex(ind);
     }
 
-    const onStop = () => {
+    const save = () => {
+        localStorage.setItem("records", JSON.stringify(allTasks));
+        const date = new Date();
+        localStorage.setItem("date", JSON.stringify(date.getDate()));
+    }
+
+    const onStop = async () => {
         if (index != -1) {
             const tmp = [...allTasks];
             tmp[index].duration += time;
@@ -46,6 +68,7 @@ export default function HomeScreen() {
             setIndex(-1);
             setTime(0);
             j = 0;
+            save();
         }
     }
 
@@ -63,7 +86,10 @@ export default function HomeScreen() {
         <TasksList tasks={allTasks} onStart={onStart} onDelete={onDeleteItem} />
         <div className={style.content}>
             <Timer time={time} title={index != -1 ? allTasks[index].name : ""} onStop={onStop} />
-            <Table headers={allTasks.map((task: Task) => task.name)} data={allTasks.map((task: Task) => Math.floor(task.duration / 60))} />
+            <Table
+                headers={allTasks.map((task: Task) => task.name)}
+                data={allTasks.map((task: Task) => Math.floor(task.duration / 60))}
+                del={onDeleteItem} />
         </div>
         <Dialog onAdd={onAddNewItem} />
     </div>;

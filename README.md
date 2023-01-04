@@ -3,7 +3,7 @@
 Screenshots
 -----------
 
-### Black
+### Black & White
 ![Screenshot Dark](https://i.imgur.com/AqJhEJX.jpg)
 ## To Contribute
 
